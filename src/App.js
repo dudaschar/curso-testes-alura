@@ -1,4 +1,5 @@
 import React from 'react';
+import Conta from './conta/Conta';
 import './App.css';
 
 function App() {
@@ -7,6 +8,8 @@ function App() {
       <header>
         <h1>ByteBank</h1>
       </header>
+
+      <Conta />
     </div>
   );
 }
