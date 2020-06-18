@@ -10,7 +10,15 @@ test('renderiza Conta', () => {
 
 test('apresenta saldo da conta', () => {
   const { getByText } = render(<Conta />);
-  const saldo = getByText('Saldo: R$ 1234,56');
+  const saldo = getByText((content, node) => {
+    const hasText = (node) => node.textContent === "Saldo: R$ 1234,56";
+    const nodeHasText = hasText(node);
+    const childrenDontHaveText = Array.from(node.children).every(
+      (child) => !hasText(child)
+    );
+
+    return nodeHasText && childrenDontHaveText;
+  });
   expect(saldo).toBeInTheDocument();
 });
 
@@ -44,6 +52,6 @@ test('deve esconder valor do saldo', () => {
 
   fireEvent.click(esconderSaldo);
 
-  const saldo = getByText('Saldo: R$ ----,--');
+  const saldo = getByText('R$ ----,--');
   expect(saldo).toBeInTheDocument();
 });
