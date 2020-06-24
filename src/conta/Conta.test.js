@@ -1,16 +1,16 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import Conta from './Conta';
 
 test('renderiza Conta', () => {
-  const { getByText } = render(<Conta />);
-  const títuloDaConta = getByText('Conta');
+  render(<Conta />);
+  const títuloDaConta = screen.getByText('Conta');
   expect(títuloDaConta).toBeInTheDocument();
 });
 
 test('apresenta saldo da conta', () => {
-  const { getByText } = render(<Conta />);
-  const saldo = getByText((content, node) => {
+  render(<Conta />);
+  const saldo = screen.getByText((content, node) => {
     const hasText = (node) => node.textContent === "Saldo: R$ 1234,56";
     const nodeHasText = hasText(node);
     const childrenDontHaveText = Array.from(node.children).every(
@@ -23,35 +23,28 @@ test('apresenta saldo da conta', () => {
 });
 
 test('apresenta opção para não mostrar saldo da conta', () => {
-  const { getByText } = render(<Conta />);
-  const esconderSaldo = getByText('Esconder saldo');
+  render(<Conta />);
+  const esconderSaldo = screen.getByText('Esconder saldo');
   expect(esconderSaldo).toBeInTheDocument();
 });
 
 test('opção de mostrar saldo/esconder saldo deve ser alteranada', () => {
-  const { getByText, queryByText } = render(<Conta />);
-  let esconderSaldo = getByText('Esconder saldo');
+  render(<Conta />);
 
-  fireEvent.click(esconderSaldo);
+  fireEvent.click(screen.getByText('Esconder saldo'));
 
-  const mostrarSaldo = getByText('Mostrar saldo');
-  
-  expect(queryByText('Esconder saldo')).toBeNull();
-  expect(mostrarSaldo).toBeInTheDocument();
+  expect(screen.queryByText('Esconder saldo')).not.toBeInTheDocument();
 
-  fireEvent.click(mostrarSaldo);
+  fireEvent.click(screen.getByText('Mostrar saldo'));
 
-  expect(queryByText('Mostrar saldo')).toBeNull();
-  esconderSaldo = getByText('Esconder saldo');
-  expect(esconderSaldo).toBeInTheDocument();
+  expect(screen.queryByText('Mostrar saldo')).not.toBeInTheDocument();
+  expect(screen.getByText('Esconder saldo')).toBeInTheDocument();
 });
 
 test('deve esconder valor do saldo', () => {
-  const { getByText } = render(<Conta />);
-  let esconderSaldo = getByText('Esconder saldo');
+  render(<Conta />);
+  
+  fireEvent.click(screen.getByText('Esconder saldo'));
 
-  fireEvent.click(esconderSaldo);
-
-  const saldo = getByText('R$ ----,--');
-  expect(saldo).toBeInTheDocument();
+  expect(screen.getByText('R$ ----,--')).toBeInTheDocument();
 });
