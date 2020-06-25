@@ -1,5 +1,6 @@
 import React from 'react';
 import Conta from './conta/Conta';
+import Transação from './transações/Transação';
 import './App.css';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       </header>
 
       <Conta />
+      <Transação />
     </div>
   );
 }
