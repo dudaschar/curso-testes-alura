@@ -1,6 +1,6 @@
 import React from 'react';
 import Conta from './conta/Conta';
-import Transação from './transações/Transação';
+import Transação from './transacoes/Transacao';
 import './App.css';
 
 function App() {
