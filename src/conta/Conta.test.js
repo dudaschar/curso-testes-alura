@@ -1,5 +1,6 @@
 import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
+import ContaService from './ContaService';
 import Conta from './Conta';
 
 test('renderiza Conta', () => {
@@ -9,9 +10,11 @@ test('renderiza Conta', () => {
 });
 
 test('apresenta saldo da conta', () => {
+  ContaService.ObterSaldo = jest.fn(() => 1234.57)
+  
   render(<Conta />);
   const saldo = screen.getByText((content, node) => {
-    const hasText = (node) => node.textContent === "Saldo: R$ 1234,56";
+    const hasText = (node) => node.textContent === "Saldo: R$ 1234,57";
     const nodeHasText = hasText(node);
     const childrenDontHaveText = Array.from(node.children).every(
       (child) => !hasText(child)
