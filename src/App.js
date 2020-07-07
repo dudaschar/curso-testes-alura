@@ -12,6 +12,9 @@ function App() {
 
       <Conta />
       <Transação />
+      <Transação />
+      <Transação />
+      <Transação />
     </div>
   );
 }
