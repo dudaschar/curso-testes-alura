@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { render, wait, waitForElement, screen } from '@testing-library/react';
+import { render, wait, screen } from '@testing-library/react';
 import Transações from './Transacoes';
 
 jest.mock('axios');
@@ -11,6 +11,7 @@ describe('Componente de transações', () => {
         axios.get.mockResolvedValue({data:[]});
         render(<Transações />)
         await wait(() => expect(axios.get).toHaveBeenCalledTimes(1))
+        expect(axios.get).toHaveBeenCalledWith('http://localhost:3001/transacoes')
     })
 
     it('mostra transações que vieram da API', async () => {
@@ -29,7 +30,7 @@ describe('Componente de transações', () => {
 
         render(<Transações />);
 
-        await waitForElement(() => screen.getByText("Alura"));
+        await screen.findByText("Alura");
 
         expect(screen.getByTestId('transacoes').children.length).toBe(2);
     })
