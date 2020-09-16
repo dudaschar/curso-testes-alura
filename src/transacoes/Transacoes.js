@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Transação from './Transacao';
-import TransacoesService from './TransacoesService';
+import api from '../api';
 
 const Transações = () => {
     const [transacoes, carregaTransacoes] = useState([]);
     useEffect(() => {
         async function carregar(){
-            const transacoes = await TransacoesService.ObterTransacoes();
+            const transacoes = await api.listaTransacoes();
+            console.log(transacoes)
             carregaTransacoes(transacoes);
         }
         carregar();

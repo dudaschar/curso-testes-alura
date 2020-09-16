@@ -1,6 +1,5 @@
 import React from 'react';
 import Conta from './conta/Conta';
-import Transação from './transacoes/Transacao';
 import Transações from './transacoes/Transacoes';
 import './App.css';
 
