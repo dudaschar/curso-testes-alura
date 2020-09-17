@@ -1,15 +1,14 @@
 import React from 'react';
-import { ConverteMês } from '../helpers/converteMes'
 import './Transacao.css'
 
 
-const Transação = ({estabelecimento, valor, data}) => {
+const Transacao = ({tipo, valor, data}) => {
     return <div className="transacao-container">
-        <p>{data.getDate().toString().padStart(2,0)} {ConverteMês(data.getMonth())}</p>
-        <p>{estabelecimento}</p>
-        <p>R$ {valor.toLocaleString().replace('.',',')}</p>
+        <p>{data}</p>
+        <p>{tipo}</p>
+        <p>R$ {valor}</p>
     </div>
 };
 
 
-export default Transação;
+export default Transacao;

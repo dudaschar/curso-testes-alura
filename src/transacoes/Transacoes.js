@@ -6,7 +6,9 @@ import Transacao from './Transacao';
 const Transacoes = ({ transacoes }) => {
     return <div data-testid="transacoes">
         {transacoes
-            .map(({id, estabelecimento, valor, data}) => <Transacao key={id} estabelecimento={estabelecimento} valor={valor} data={new Date(data)}/>)}
+            .map(({id, transacao, valor, data}) =>
+            <Transacao key={`${id}-${transacao}`} tipo={transacao} valor={valor} data={data}
+        />)}
     </div>
 };
 

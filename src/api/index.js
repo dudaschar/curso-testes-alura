@@ -24,8 +24,15 @@ const atualizaSaldo = (saldo) => conecta(CONTA_URI, {
   body: JSON.stringify({saldo}),
 });
 
+const atualizaTransacoes = (dados) => conecta(TRANSACOES_URI, {
+  method: 'POST',
+  headers: {'Content-Type': 'application/json;charset=utf-8'},
+  body: JSON.stringify(dados),
+});
+
 export default {
   listaTransacoes,
   buscaSaldo,
   atualizaSaldo,
+  atualizaTransacoes,
 };

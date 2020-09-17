@@ -14,7 +14,8 @@ const Conta = ({ saldo, realizarTransacao }) => {
 
     function handleSubmit(e) {
         e.preventDefault();
-        realizarTransacao(valores);
+        const dataTransacao = new Date().toLocaleDateString('pt-br');
+        realizarTransacao({...valores, data: dataTransacao});
     }
 
     return <div className="Conta-header">
