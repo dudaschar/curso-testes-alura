@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import api from '../api';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './Conta.css'
 
-const Conta = () => {
-    const [saldo, atualizarSaldo] = useState(1000);
+const Conta = ({ saldo, realizarTransacao }) => {
     const [valores, atualizarValores] = useState({transacao: '', valor: 0});
 
     function handleChange(e) {
@@ -13,22 +12,15 @@ const Conta = () => {
         atualizarValores(valoresAtualizados);
     }
 
-    function onSubmit(e) {
+    function handleSubmit(e) {
         e.preventDefault();
-        console.log(valores)
+        realizarTransacao(valores);
     }
-
-    useEffect(() => {
-        async function obterSaldo() {
-            atualizarSaldo(await api.buscaSaldo());
-        }
-        obterSaldo();
-    },[])
 
     return <div className="Conta-header">
         <h2>Conta</h2>
         <p>Saldo: <span className="Saldo-valor">{`R$ ${saldo}`}</span></p>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit}>
             <div>
                 <label>
                     Depósito
@@ -70,6 +62,10 @@ const Conta = () => {
             </div>
         </form>
     </div>
-}
+};
+
+Conta.propTypes = {
+    saldo: PropTypes.number.isRequired,
+};
 
 export default Conta;

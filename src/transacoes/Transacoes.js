@@ -1,23 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import Transação from './Transacao';
-import api from '../api';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const Transações = () => {
-    const [transacoes, carregaTransacoes] = useState([]);
-    useEffect(() => {
-        async function carregar(){
-            const transacoes = await api.listaTransacoes();
-            console.log(transacoes)
-            carregaTransacoes(transacoes);
-        }
-        carregar();
-    }, [])
+import Transacao from './Transacao';
 
+const Transacoes = ({ transacoes }) => {
     return <div data-testid="transacoes">
         {transacoes
-            .map(({id, estabelecimento, valor, data}) => <Transação key={id} estabelecimento={estabelecimento} valor={valor} data={new Date(data)}/>)}
+            .map(({id, estabelecimento, valor, data}) => <Transacao key={id} estabelecimento={estabelecimento} valor={valor} data={new Date(data)}/>)}
     </div>
 };
 
+Transacoes.propTypes = {
+    transacoes: PropTypes.array.isRequired,
+}
 
-export default Transações;
+
+export default Transacoes;
