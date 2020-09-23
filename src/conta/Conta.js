@@ -65,8 +65,12 @@ const Conta = ({ saldo, realizarTransacao }) => {
     </div>
 };
 
+Conta.defaultProps = {
+    saldo: 0,
+}
+
 Conta.propTypes = {
-    saldo: PropTypes.number.isRequired,
+    saldo: PropTypes.number,
 };
 
 export default Conta;

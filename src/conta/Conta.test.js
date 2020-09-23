@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { render, fireEvent, screen, waitForElementToBeRemoved } from '@testing-library/react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import Conta from './Conta';
 
 jest.mock('axios');
@@ -16,16 +16,14 @@ beforeAll(() => {
 describe('Componente da Conta', () => {
   it('renderiza Conta', async () => {
     render(<Conta />);
-    await waitForElementToBeRemoved(() => screen.getByText('carregando'));
     const títuloDaConta = screen.getByText('Conta');
     expect(títuloDaConta).toBeInTheDocument();
   });
 
   it('apresenta valor do saldo da conta com símbolo de REAL', async () => {
-    render(<Conta />);
-    await waitForElementToBeRemoved(() => screen.getByText('carregando'));
+    render(<Conta saldo={1000} />);
     const saldo = screen.getByText((content, node) => {
-      const hasText = (node) => node.textContent === "Saldo: R$ 1234,57";
+      const hasText = (node) => node.textContent === "Saldo: R$ 1000";
       const nodeHasText = hasText(node);
       const childrenDontHaveText = Array.from(node.children).every(
         (child) => !hasText(child)
@@ -36,35 +34,13 @@ describe('Componente da Conta', () => {
     expect(saldo).toBeInTheDocument();
   });
 
-  describe('uma conta tem a opção de esconder/mostrar saldo', ()=> {
-    it('apresenta opção esconder saldo da conta', async () => {
-      render(<Conta />);
-      await waitForElementToBeRemoved(() => screen.getByText('carregando'));
-      const esconderSaldo = screen.getByText('Esconder saldo');
-      expect(esconderSaldo).toBeInTheDocument();
-    });
-  
-    it('alterna entre opção de mostrar saldo e esconder saldo ao ser clicada', async () => {
-      render(<Conta />);
-      await waitForElementToBeRemoved(() => screen.getByText('carregando'));
-      fireEvent.click(screen.getByText('Esconder saldo'));
-  
-      expect(screen.queryByText('Esconder saldo')).not.toBeInTheDocument();
-  
-      fireEvent.click(screen.getByText('Mostrar saldo'));
-  
-      expect(screen.queryByText('Mostrar saldo')).not.toBeInTheDocument();
-      expect(screen.getByText('Esconder saldo')).toBeInTheDocument();
-    });
-  
-    it('esconde o valor do saldo do saldo da conta quando clica em Esconder saldo', async () => {
-      render(<Conta />);
-      await waitForElementToBeRemoved(() => screen.getByText('carregando'));
-      
-      fireEvent.click(screen.getByText('Esconder saldo'));
-  
-      expect(screen.getByText('R$ ----,--')).toBeInTheDocument();
+  describe('uma conta pode ter um valor depositado ou sacado', ()=> {
+  it('executa a ação de realizar a transacão', () => {
+      const realizarTransacaoMock = jest.fn();
+
+      const { getByText } = render(<Conta saldo={1000} realizarTransacao={realizarTransacaoMock} />);
+      fireEvent.click(getByText('Realizar operação'))
+      expect(realizarTransacaoMock).toHaveBeenCalled();
     });
   })
-
 });
