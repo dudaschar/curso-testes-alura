@@ -1,7 +1,5 @@
 {
-  "conta": {
-    "saldo": 1230
-  },
+  "conta": {},
   "transacoes": [
     {
       "valor": 0,
@@ -146,6 +144,18 @@
       "valor": "10",
       "data": "22/09/2020",
       "id": 24
+    },
+    {
+      "transacao": "saque",
+      "valor": 0,
+      "data": "23/09/2020",
+      "id": 25
+    },
+    {
+      "transacao": "deposito",
+      "valor": "10",
+      "data": "23/09/2020",
+      "id": 26
     }
   ]
 }

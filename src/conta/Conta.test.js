@@ -20,6 +20,12 @@ describe('Componente da Conta', () => {
     expect(títuloDaConta).toBeInTheDocument();
   });
 
+  it('snapshot teste deve permanecer o mesmo', () => {
+    const componente = render(<Conta />);
+
+    expect(componente).toMatchSnapshot();
+  })
+
   it('apresenta valor do saldo da conta com símbolo de REAL', async () => {
     render(<Conta saldo={1000} />);
     const saldo = screen.getByText((content, node) => {
