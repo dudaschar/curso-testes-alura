@@ -1,6 +1,6 @@
 {
   "conta": {
-    "saldo": 1090
+    "saldo": 1230
   },
   "transacoes": [
     {
@@ -38,6 +38,114 @@
       "valor": "100",
       "data": "17/09/2020",
       "id": 6
+    },
+    {
+      "transacao": "deposito",
+      "valor": "100",
+      "data": "22/09/2020",
+      "id": 7
+    },
+    {
+      "transacao": "",
+      "valor": "10",
+      "data": "22/09/2020",
+      "id": 8
+    },
+    {
+      "transacao": "",
+      "valor": "10",
+      "data": "22/09/2020",
+      "id": 9
+    },
+    {
+      "transacao": "",
+      "valor": "10",
+      "data": "22/09/2020",
+      "id": 10
+    },
+    {
+      "transacao": "",
+      "valor": "10",
+      "data": "22/09/2020",
+      "id": 11
+    },
+    {
+      "transacao": "saque",
+      "valor": "10",
+      "data": "22/09/2020",
+      "id": 12
+    },
+    {
+      "transacao": "saque",
+      "valor": "10",
+      "data": "22/09/2020",
+      "id": 13
+    },
+    {
+      "transacao": "saque",
+      "valor": "10",
+      "data": "22/09/2020",
+      "id": 14
+    },
+    {
+      "transacao": "",
+      "valor": "10",
+      "data": "22/09/2020",
+      "id": 15
+    },
+    {
+      "transacao": "",
+      "valor": "10",
+      "data": "22/09/2020",
+      "id": 16
+    },
+    {
+      "transacao": "saque",
+      "valor": 0,
+      "data": "22/09/2020",
+      "id": 17
+    },
+    {
+      "transacao": "saque",
+      "valor": "10",
+      "data": "22/09/2020",
+      "id": 18
+    },
+    {
+      "transacao": "saque",
+      "valor": "10",
+      "data": "22/09/2020",
+      "id": 19
+    },
+    {
+      "transacao": "",
+      "valor": "10",
+      "data": "22/09/2020",
+      "id": 20
+    },
+    {
+      "transacao": "",
+      "valor": "10",
+      "data": "22/09/2020",
+      "id": 21
+    },
+    {
+      "transacao": "",
+      "valor": "10",
+      "data": "22/09/2020",
+      "id": 22
+    },
+    {
+      "transacao": "",
+      "valor": "10",
+      "data": "22/09/2020",
+      "id": 23
+    },
+    {
+      "transacao": "",
+      "valor": "10",
+      "data": "22/09/2020",
+      "id": 24
     }
   ]
 }

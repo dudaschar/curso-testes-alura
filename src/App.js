@@ -20,7 +20,16 @@ function App() {
   }
 
   function realizarTransacao(valores) {
-    const novoSaldo = saldo + parseInt(valores.valor);
+    console.log(valores)
+
+    const novoSaldo = () => {
+      if (valores.transacao === 'deposito') {
+        return saldo + parseInt(valores.valor);
+      } else {
+        return saldo - parseInt(valores.valor);
+      }
+    }
+    
 
     api.atualizaSaldo(novoSaldo).catch((error) => console.error(error))
     api.atualizaTransacoes(valores).catch((error) => console.error(error))

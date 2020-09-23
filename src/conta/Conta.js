@@ -30,6 +30,7 @@ const Conta = ({ saldo, realizarTransacao }) => {
                         name="transacao"
                         value="deposito"
                         onChange={handleChange}
+                        data-testid="transacao"
                         checked={valores.transacao === 'deposito'}   
                     />
                 </label>
@@ -42,6 +43,7 @@ const Conta = ({ saldo, realizarTransacao }) => {
                         type="radio"
                         name="transacao"
                         value="saque"
+                        data-testid="transacao"
                         onChange={handleChange}
                         checked={valores.transacao === 'saque'}     
                     />
@@ -53,6 +55,7 @@ const Conta = ({ saldo, realizarTransacao }) => {
                 type="text"
                 name="valor"
                 value={valores.valor}
+                data-testid="valor"
                 onChange={handleChange}
             ></input>
 

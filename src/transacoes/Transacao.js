@@ -1,14 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './Transacao.css'
 
 
-const Transacao = ({tipo, valor, data}) => {
-    return <div className="transacao-container">
-        <p>{data}</p>
-        <p>{tipo}</p>
-        <p>R$ {valor}</p>
-    </div>
+function Transacao({ data, tipo, valor }) {
+    return (
+        <div className="transacao-container">
+            <p>{data}</p>
+            <p>{tipo}</p>
+            <p>R$ {valor}</p>
+        </div>
+    )
 };
 
+Transacao.defaultProps = {
+    tipo: '',
+    valor: 0,
+    data: '',
+}
+
+Transacao.propTypes = {
+    tipo: PropTypes.string,
+    valor: PropTypes.number,
+    data: PropTypes.string,
+}
 
 export default Transacao;
