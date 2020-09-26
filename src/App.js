@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import Conta from './conta/Conta';
-import Transações from './transacoes/Transacoes';
+import Transacoes from './transacoes/Transacoes';
 import api from './api';
 
 import './App.css';
@@ -20,17 +20,10 @@ function App() {
   }
 
   function realizarTransacao(valores) {
-    console.log(valores)
-
-    const novoSaldo = () => {
-      if (valores.transacao === 'deposito') {
-        return saldo + parseInt(valores.valor);
-      } else {
-        return saldo - parseInt(valores.valor);
-      }
-    }
+    const novoSaldo = valores.transacao === 'deposito'
+      ? saldo + parseInt(valores.valor)
+      : saldo - parseInt(valores.valor);
     
-
     api.atualizaSaldo(novoSaldo).catch((error) => console.error(error))
     api.atualizaTransacoes(valores).catch((error) => console.error(error))
     
@@ -50,7 +43,7 @@ function App() {
       </header>
 
       <Conta saldo={saldo} realizarTransacao={realizarTransacao}/>
-      <Transações transacoes={transacoes} />
+      <Transacoes transacoes={transacoes} />
     </div>
   );
 }
