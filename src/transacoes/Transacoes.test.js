@@ -8,14 +8,14 @@ jest.mock('axios');
 describe('Componente de transações', () => {
   it('mostra transações que vieram da API', async () => {
       const resultadoTransacoes = axios.get.mockResolvedValue([{
-          "valor": 0,
+          "valor": "0",
           "transacao": "saque",
           "data": "10/08/2020",
           "id": 1
         },
         {
           "transacao": "deposito",
-          "valor": 10,
+          "valor": "10",
           "data": "17/09/2020",
           "id": 2
         },]);

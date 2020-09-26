@@ -13,11 +13,19 @@ const Transacoes = ({ transacoes }) => {
 };
 
 Transacoes.defaultProp = {
-    transacoes: [],
+    transacoes: [{
+        tipo: '',
+        valor: '',
+        data: '',
+    }],
 }
 
 Transacoes.propTypes = {
-    transacoes: PropTypes.array,
+    transacoes: PropTypes.arrayOf(PropTypes.shape({
+        tipo: PropTypes.string,
+        valor: PropTypes.string,
+        data: PropTypes.string,
+    })),
 }
 
 

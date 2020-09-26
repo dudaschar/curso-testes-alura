@@ -16,13 +16,13 @@ function Transacao({ data, tipo, valor }) {
 
 Transacao.defaultProps = {
     tipo: '',
-    valor: 0,
+    valor: '0',
     data: '',
 }
 
 Transacao.propTypes = {
     tipo: PropTypes.string,
-    valor: PropTypes.number,
+    valor: PropTypes.string,
     data: PropTypes.string,
 }
 
