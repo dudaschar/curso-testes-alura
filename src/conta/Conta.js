@@ -20,7 +20,7 @@ const Conta = ({ saldo, realizarTransacao }) => {
 
     return <div className="Conta-header">
         <h2>Conta</h2>
-        <p>Saldo: <span className="Saldo-valor">{`R$ ${saldo}`}</span></p>
+        <p>Saldo: <span data-testid="saldo-conta" className="Saldo-valor">{`R$ ${saldo}`}</span></p>
         <form onSubmit={handleSubmit}>
             <div>
                 <label>

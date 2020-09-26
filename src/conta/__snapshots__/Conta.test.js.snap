@@ -15,6 +15,7 @@ Object {
           Saldo: 
           <span
             class="Saldo-valor"
+            data-testid="saldo-conta"
           >
             R$ 0
           </span>
@@ -71,6 +72,7 @@ Object {
         Saldo: 
         <span
           class="Saldo-valor"
+          data-testid="saldo-conta"
         >
           R$ 0
         </span>
